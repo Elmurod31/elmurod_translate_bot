@@ -1,12 +1,10 @@
-from aiogram import Router, types
-from aiogram.filters import CommandStart
+from aiogram import Router
+from aiogram.filters import Command
+from aiogram.types import Message
 
-from handlers.keyboards import start_button
 
 router = Router()
 
-@router.message(CommandStart())
-async def start_handler(message: types.Message):
-    await message.answer(text="Assalomu aleykom!\n"
-                              "Valyuta ayirboshlash",
-                         reply_markup=start_button)
+@router.message(Command("start"))
+async def command_start_handler(message: Message) -> None:
+    await message.answer("Valyuta ayirboshlash botiga xush kelibsiz!")
